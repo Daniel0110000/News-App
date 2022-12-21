@@ -1,10 +1,16 @@
-package com.example.newsapp
+package com.example.newsapp.ui.activities
 
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
+import com.example.newsapp.R
 import com.example.newsapp.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +27,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun initUI(){
         changeTheme()
+        initNavigationView()
+    }
+
+    private fun initNavigationView(){
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        binding.openDrawer.setOnClickListener{
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+        val navView = findViewById<NavigationView>(R.id.nav_drawer)
+        val navController = Navigation.findNavController(this, R.id.fragment)
+        NavigationUI.setupWithNavController(navView, navController)
     }
 
     private fun changeTheme(){

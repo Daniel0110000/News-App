@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:checked="true"
+            android:icon="@drawable/ic_home"
+            android:title="@string/home" />
+
+        <item
+            android:id="@+id/markers"
+            android:icon="@drawable/ic_bookmark"
+            android:title="@string/markers" />
+
+        <item
+            android:id="@+id/search"
+            android:icon="@drawable/ic_search_nav"
+            android:title="@string/search" />
+    </group>
+
+    <item android:title="@string/categories">
+
+        <menu>
+
+            <item
+                android:id="@+id/business"
+                android:checkable="true"
+                android:icon="@drawable/ic_business"
+                android:title="@string/business" />
+
+            <item
+                android:id="@+id/science"
+                android:checkable="true"
+                android:icon="@drawable/ic_science"
+                android:title="@string/science" />
+
+            <item
+                android:id="@+id/sports"
+                android:checkable="true"
+                android:icon="@drawable/ic_sports"
+                android:title="@string/sports" />
+
+            <item
+                android:id="@+id/technology"
+                android:checkable="true"
+                android:icon="@drawable/ic_technology"
+                android:title="@string/technology" />
+
+            <item
+                android:id="@+id/health"
+                android:checkable="true"
+                android:icon="@drawable/ic_healing"
+                android:title="@string/health" />
+
+            <item
+                android:id="@+id/entertainment"
+                android:checkable="true"
+                android:icon="@drawable/ic_entertainment"
+                android:title="@string/entertainment" />
+
+        </menu>
+
+    </item>
+
+</menu>

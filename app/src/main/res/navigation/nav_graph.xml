@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.newsapp.ui.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/business"
+        android:name="com.example.newsapp.ui.fragments.Business"
+        android:label="fragment_business"
+        tools:layout="@layout/fragment_business" />
+    <fragment
+        android:id="@+id/entertainment"
+        android:name="com.example.newsapp.ui.fragments.Entertainment"
+        android:label="fragment_entertainment"
+        tools:layout="@layout/fragment_entertainment" />
+    <fragment
+        android:id="@+id/health"
+        android:name="com.example.newsapp.ui.fragments.Health"
+        android:label="fragment_health"
+        tools:layout="@layout/fragment_health" />
+    <fragment
+        android:id="@+id/science"
+        android:name="com.example.newsapp.ui.fragments.Science"
+        android:label="fragment_science"
+        tools:layout="@layout/fragment_science" />
+    <fragment
+        android:id="@+id/sports"
+        android:name="com.example.newsapp.ui.fragments.Sports"
+        android:label="fragment_sports"
+        tools:layout="@layout/fragment_sports" />
+    <fragment
+        android:id="@+id/technology"
+        android:name="com.example.newsapp.ui.fragments.Technology"
+        android:label="fragment_technology"
+        tools:layout="@layout/fragment_technology" />
+</navigation>
