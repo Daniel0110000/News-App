@@ -11,7 +11,12 @@ import androidx.navigation.ui.NavigationUI
 import com.example.newsapp.R
 import com.example.newsapp.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -25,25 +30,31 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun initUI(){
+    private fun initUI() {
         changeTheme()
         initNavigationView()
     }
 
-    private fun initNavigationView(){
+    private fun initNavigationView() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        binding.openDrawer.setOnClickListener{
+        binding.openDrawer.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
         val navView = findViewById<NavigationView>(R.id.nav_drawer)
         val navController = Navigation.findNavController(this, R.id.fragment)
         NavigationUI.setupWithNavController(navView, navController)
+
+
     }
 
-    private fun changeTheme(){
-        when(resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK){
-            Configuration.UI_MODE_NIGHT_NO -> { AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) }
-            Configuration.UI_MODE_NIGHT_YES -> { AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) }
+    private fun changeTheme() {
+        when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_NO -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+            Configuration.UI_MODE_NIGHT_YES -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
         }
     }
 }
