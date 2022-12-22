@@ -1,7 +1,7 @@
 package com.example.newsapp.domain.di
 
 import com.example.newsapp.data.repository.NewsRepositoryImpl
-import com.example.newsapp.domain.domain.NewsRepository
+import com.example.newsapp.domain.repository.NewsRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

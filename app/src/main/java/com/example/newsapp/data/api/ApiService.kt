@@ -11,4 +11,7 @@ interface ApiService {
     @GET(PATH_URL)
     suspend fun getGeneralNews(@Query("category") category: String = "general", @Query("apiKey") apiKey: String = API_KEY): NewsResponseDTO
 
+    @GET(PATH_URL)
+    suspend fun getNewsByCategory(@Query("category") category: String, @Query("apiKey") apiKey: String = API_KEY): NewsResponseDTO
+
 }

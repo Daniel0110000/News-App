@@ -4,7 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newsapp.domain.model.News
-import com.example.newsapp.domain.usecases.GetNewsUseCase
+import com.example.newsapp.domain.usecases.GetGeneralNewsUseCase
+import com.example.newsapp.domain.usecases.GetNewsByCategoryUseCase
 import com.example.newsapp.domain.utilities.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -16,10 +17,12 @@ import javax.inject.Inject
 class NewsViewModel
     @Inject
     constructor(
-        private val getNewsUseCase: GetNewsUseCase
+        private val getGeneralNewsUseCase: GetGeneralNewsUseCase,
+        private val getNewsByCategoryUseCase: GetNewsByCategoryUseCase
     ): ViewModel() {
 
     val generalNews = MutableLiveData<ArrayList<News>?>()
+    val newsByCategory = MutableLiveData<ArrayList<News>?>()
     val isLoading = MutableLiveData<Boolean>()
 
     init {
@@ -29,7 +32,7 @@ class NewsViewModel
 
     private fun getGeneralNews(){
         viewModelScope.launch(Dispatchers.IO) {
-            when(val newsResource = getNewsUseCase()){
+            when(val newsResource = getGeneralNewsUseCase()){
                 is Resource.Success -> withContext(Dispatchers.Main){
                     generalNews.value = newsResource.data
                     isLoading.value = false
@@ -37,6 +40,21 @@ class NewsViewModel
                 is Resource.Error -> withContext(Dispatchers.Main){
                     isLoading.value = false
                     generalNews.value = null
+                }
+            }
+        }
+    }
+
+    fun getNewsByCategory(category: String){
+        viewModelScope.launch(Dispatchers.IO) {
+            when(val newsResource = getNewsByCategoryUseCase(category)){
+                is Resource.Success -> withContext(Dispatchers.Main){
+                    newsByCategory.value = newsResource.data
+                    isLoading.value = false
+                }
+                is Resource.Error -> withContext(Dispatchers.Main){
+                    newsByCategory.value = null
+                    isLoading.value = false
                 }
             }
         }
