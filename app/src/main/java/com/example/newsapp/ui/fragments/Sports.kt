@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.newsapp.R
 import com.example.newsapp.databinding.FragmentSportsBinding
+import com.example.newsapp.domain.utilities.Constants.SPORTS
 import com.example.newsapp.ui.commons.ViewModelInstances.Companion.initUICategories
 import com.example.newsapp.ui.viewModels.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,7 +32,7 @@ class Sports : Fragment() {
             this,
             binding.recyclerSports,
             binding.sportsProgressBar,
-            "sports"
+            SPORTS
         )
 
         return binding.root

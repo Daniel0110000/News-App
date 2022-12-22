@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import com.example.newsapp.R
 import com.example.newsapp.databinding.FragmentTechnologyBinding
 import com.example.newsapp.domain.model.News
+import com.example.newsapp.domain.utilities.Constants.TECHNOLOGY
 import com.example.newsapp.ui.commons.ViewModelInstances.Companion.initUICategories
 import com.example.newsapp.ui.viewModels.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,7 +34,7 @@ class Technology : Fragment() {
             this,
             binding.recyclerTechnology,
             binding.technologyProgressBar,
-            "technology"
+            TECHNOLOGY
         )
 
         return binding.root

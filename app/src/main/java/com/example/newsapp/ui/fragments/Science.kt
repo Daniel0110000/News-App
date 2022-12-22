@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.R
 import com.example.newsapp.databinding.FragmentScienceBinding
 import com.example.newsapp.domain.model.News
+import com.example.newsapp.domain.utilities.Constants.SCIENCE
 import com.example.newsapp.ui.adapters.RecyclerNewsAdapter
 import com.example.newsapp.ui.commons.ViewModelInstances.Companion.initUICategories
 import com.example.newsapp.ui.viewModels.NewsViewModel
@@ -36,7 +37,7 @@ class Science : Fragment() {
             this,
             binding.recyclerScience,
             binding.scienceProgressBar,
-            "science"
+            SCIENCE
         )
 
         return binding.root

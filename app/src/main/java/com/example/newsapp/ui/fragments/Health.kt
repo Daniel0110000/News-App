@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.newsapp.R
 import com.example.newsapp.databinding.FragmentHealthBinding
+import com.example.newsapp.domain.utilities.Constants.HEALTH
 import com.example.newsapp.ui.commons.ViewModelInstances.Companion.initUICategories
 import com.example.newsapp.ui.viewModels.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,7 +32,7 @@ class Health : Fragment() {
             this,
             binding.recyclerHealth,
             binding.healthProgressBar,
-            "health"
+            HEALTH
         )
 
         return binding.root
