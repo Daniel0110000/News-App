@@ -4,4 +4,5 @@
     <color name="blue_whale">#072D4B</color>
     <color name="medium_persian_blue">#0768B5</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gainsboro">#DDDDDD</color>
 </resources>

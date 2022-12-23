@@ -9,4 +9,6 @@ interface NewsRepository {
 
     suspend fun getNewsByCategory(category: String): Resource<ArrayList<News>>
 
+    suspend fun searchNews(q: String): Resource<ArrayList<News>>
+
 }

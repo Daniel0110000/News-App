@@ -1,8 +1,9 @@
 package com.example.newsapp.ui.activities
 
+import android.content.Intent
 import android.content.res.Configuration
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -12,9 +13,6 @@ import com.example.newsapp.R
 import com.example.newsapp.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -33,6 +31,9 @@ class MainActivity : AppCompatActivity() {
     private fun initUI() {
         changeTheme()
         initNavigationView()
+        binding.searchNews.setOnClickListener {
+            startActivity(Intent(this, SearchNews::class.java))
+        }
     }
 
     private fun initNavigationView() {
