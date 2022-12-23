@@ -10,7 +10,7 @@ import com.example.newsapp.R
 import com.example.newsapp.domain.model.News
 import com.squareup.picasso.Picasso
 
-class RecyclerNewsAdapter(private val newsList: ArrayList<News>): RecyclerView.Adapter<RecyclerNewsAdapter.ViewHolder>() {
+class RecyclerNewsAdapter(private val newsList: ArrayList<News>, private val listener: NewClickListener): RecyclerView.Adapter<RecyclerNewsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.recycler_rows_design, parent, false))
@@ -49,7 +49,13 @@ class RecyclerNewsAdapter(private val newsList: ArrayList<News>): RecyclerView.A
             }
 
             publishedNews.text = newsList[position].publishedAt
+
+            itemView.setOnClickListener {
+                listener.onItemClickListener(newsList[position].url)
+            }
+
         }
 
     }
+
 }

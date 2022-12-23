@@ -1,15 +1,14 @@
 package com.example.newsapp.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.newsapp.R
 import com.example.newsapp.databinding.FragmentEntertainmentBinding
 import com.example.newsapp.domain.utilities.Constants.ENTERTAINMENT
-import com.example.newsapp.ui.commons.ViewModelInstances.Companion.initUICategories
+import com.example.newsapp.ui.common.DisplayingFragmentElementsIns
 import com.example.newsapp.ui.viewModels.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,6 +20,8 @@ class Entertainment : Fragment() {
 
     private val viewModel: NewsViewModel by viewModels()
 
+    private lateinit var displayingFragmentElementsIns: DisplayingFragmentElementsIns
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,13 +29,15 @@ class Entertainment : Fragment() {
 
         _binding = FragmentEntertainmentBinding.inflate(inflater, container, false)
 
-        initUICategories(
+        displayingFragmentElementsIns = DisplayingFragmentElementsIns(
             viewModel,
             this,
             binding.recyclerEntertainment,
             binding.entertainmentProgressBar,
             ENTERTAINMENT
         )
+
+        displayingFragmentElementsIns.initUICategories()
 
         return binding.root
 

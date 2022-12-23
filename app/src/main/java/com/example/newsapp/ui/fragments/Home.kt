@@ -1,5 +1,6 @@
 package com.example.newsapp.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.R
 import com.example.newsapp.databinding.FragmentHomeBinding
 import com.example.newsapp.domain.model.News
+import com.example.newsapp.ui.activities.DescriptionNews
+import com.example.newsapp.ui.adapters.NewClickListener
 import com.example.newsapp.ui.adapters.RecyclerNewsAdapter
 import com.example.newsapp.ui.viewModels.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class Home : Fragment() {
+class Home : Fragment(), NewClickListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -61,8 +64,14 @@ class Home : Fragment() {
         binding.recyclerGeneralNews.apply {
             hasFixedSize()
             layoutManager = LinearLayoutManager(context)
-            adapter = RecyclerNewsAdapter(newsList)
+            adapter = RecyclerNewsAdapter(newsList, this@Home)
         }
+    }
+
+    override fun onItemClickListener(url: String) {
+        val descriptionNews = Intent(context, DescriptionNews::class.java)
+        descriptionNews.putExtra("url", url)
+        startActivity(descriptionNews)
     }
 
 
