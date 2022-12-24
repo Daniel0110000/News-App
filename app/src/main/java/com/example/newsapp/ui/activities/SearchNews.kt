@@ -31,32 +31,32 @@ class SearchNews : AppCompatActivity(), NewClickListener {
         initUI()
     }
 
-    private fun initUI(){
+    private fun initUI() {
         binding.backLayout.setOnClickListener {
             finish()
         }
 
-        viewModel.searchNewsResult.observe(this){ news ->
-            if(news != null){
-                if(news.size > 0){
+        viewModel.searchNewsResult.observe(this) { news ->
+            if (news != null) {
+                if (news.size > 0) {
                     initRecyclerView(news)
                     visibleOrGoneLayouts(View.GONE, View.VISIBLE, View.GONE, false)
-                }else{
+                } else {
                     visibleOrGoneLayouts(View.GONE, View.GONE, View.VISIBLE, false)
                 }
-            }else{
+            } else {
                 visibleOrGoneLayouts(View.GONE, View.GONE, View.GONE, true)
             }
         }
 
-        viewModel.isEmptyData.observe(this){ isEmpty ->
-            if(isEmpty){
+        viewModel.isEmptyData.observe(this) { isEmpty ->
+            if (isEmpty) {
                 visibleOrGoneLayouts(View.VISIBLE, View.GONE, View.GONE, false)
             }
         }
     }
 
-    private fun initRecyclerView(newsList: ArrayList<News>){
+    private fun initRecyclerView(newsList: ArrayList<News>) {
         binding.recyclerSearchNews.apply {
             hasFixedSize()
             layoutManager = LinearLayoutManager(this@SearchNews)
@@ -64,13 +64,18 @@ class SearchNews : AppCompatActivity(), NewClickListener {
         }
     }
 
-    private fun visibleOrGoneLayouts(sdLayout: Int, rsLayout: Int, nfLayout: Int, networkMessage: Boolean){
+    private fun visibleOrGoneLayouts(
+        sdLayout: Int,
+        rsLayout: Int,
+        nfLayout: Int,
+        networkMessage: Boolean
+    ) {
         binding.searchDescriptionLayout.visibility = sdLayout
         binding.recyclerSearchNews.visibility = rsLayout
-        binding.newsNotFaundLayout.visibility = nfLayout
-        if(networkMessage){
+        binding.newsNotFoundLayout.visibility = nfLayout
+        if (networkMessage) {
             findViewById<ConstraintLayout>(R.id.network_error_layout).visibility = View.VISIBLE
-        }else{
+        } else {
             findViewById<ConstraintLayout>(R.id.network_error_layout).visibility = View.GONE
         }
     }

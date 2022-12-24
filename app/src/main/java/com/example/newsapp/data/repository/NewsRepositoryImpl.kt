@@ -8,17 +8,17 @@ import com.example.newsapp.domain.utilities.Resource
 import javax.inject.Inject
 
 class NewsRepositoryImpl
-    @Inject
-    constructor(
-        private val apiService: ApiService
-    ): NewsRepository {
+@Inject
+constructor(
+    private val apiService: ApiService
+) : NewsRepository {
 
     override suspend fun getGeneralNews(): Resource<ArrayList<News>> {
         return try {
             Resource.Success(
                 data = apiService.getGeneralNews().getMapper()
             )
-        }catch (e:Exception){
+        } catch (e: Exception) {
             Resource.Error(
                 message = "Error ${e.message}!"
             )
@@ -30,7 +30,7 @@ class NewsRepositoryImpl
             Resource.Success(
                 data = apiService.getNewsByCategory(category).getMapper()
             )
-        }catch (e: Exception){
+        } catch (e: Exception) {
             Resource.Error(
                 message = "Error ${e.message}!"
             )
@@ -38,11 +38,11 @@ class NewsRepositoryImpl
     }
 
     override suspend fun searchNews(q: String): Resource<ArrayList<News>> {
-        return try{
+        return try {
             Resource.Success(
                 data = apiService.searchNews(q).getMapper()
             )
-        } catch (e: Exception){
+        } catch (e: Exception) {
             Resource.Error(
                 message = "Error ${e.message}"
             )

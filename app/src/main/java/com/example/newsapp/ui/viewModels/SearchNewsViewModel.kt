@@ -14,10 +14,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchNewsViewModel
-    @Inject
-    constructor(
-        private val searchNewsUseCase: SearchNewsUseCase
-    ): ViewModel() {
+@Inject
+constructor(
+    private val searchNewsUseCase: SearchNewsUseCase
+) : ViewModel() {
 
     val q = MutableLiveData<String>()
     val searchNewsResult = MutableLiveData<ArrayList<News>?>()
@@ -27,19 +27,19 @@ class SearchNewsViewModel
         q.value = ""
     }
 
-    fun search(){
+    fun search() {
         viewModelScope.launch(Dispatchers.IO) {
-            if(q.value?.isNotEmpty() == true){
-                when (val newsResource = searchNewsUseCase(q.value!!)){
-                    is Resource.Success -> withContext(Dispatchers.Main){
+            if (q.value?.isNotEmpty() == true) {
+                when (val newsResource = searchNewsUseCase(q.value!!)) {
+                    is Resource.Success -> withContext(Dispatchers.Main) {
                         searchNewsResult.value = newsResource.data
                     }
-                    is Resource.Error -> withContext(Dispatchers.Main){
+                    is Resource.Error -> withContext(Dispatchers.Main) {
                         searchNewsResult.value = null
                     }
                 }
-            }else{
-                withContext(Dispatchers.Main){
+            } else {
+                withContext(Dispatchers.Main) {
                     isEmptyData.value = true
                 }
             }

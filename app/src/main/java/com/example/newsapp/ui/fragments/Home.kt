@@ -39,20 +39,21 @@ class Home : Fragment(), NewClickListener {
 
     }
 
-    private fun initUI(){
-        viewModel.generalNews.observe(viewLifecycleOwner){ news ->
-            if(news != null){
+    private fun initUI() {
+        viewModel.generalNews.observe(viewLifecycleOwner) { news ->
+            if (news != null) {
                 initRecyclerView(news)
-            }else{
-                view?.findViewById<ConstraintLayout>(R.id.network_error_layout)!!.visibility = View.VISIBLE
+            } else {
+                view?.findViewById<ConstraintLayout>(R.id.network_error_layout)!!.visibility =
+                    View.VISIBLE
             }
         }
 
-        viewModel.isLoading.observe(viewLifecycleOwner){ isLoading ->
-            if(isLoading){
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) {
                 binding.homeProgressBar.visibility = View.VISIBLE
                 binding.recyclerGeneralNews.visibility = View.GONE
-            }else{
+            } else {
                 binding.homeProgressBar.visibility = View.GONE
                 binding.recyclerGeneralNews.visibility = View.VISIBLE
             }
@@ -60,7 +61,7 @@ class Home : Fragment(), NewClickListener {
 
     }
 
-    private fun initRecyclerView(newsList: ArrayList<News>){
+    private fun initRecyclerView(newsList: ArrayList<News>) {
         binding.recyclerGeneralNews.apply {
             hasFixedSize()
             layoutManager = LinearLayoutManager(context)

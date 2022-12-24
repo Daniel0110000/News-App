@@ -18,7 +18,7 @@ class DescriptionNews : AppCompatActivity() {
 
     }
 
-    private fun initUI(){
+    private fun initUI() {
         val url: String = intent.getStringExtra("url").toString()
         binding.webDescriptionNews.apply {
             settings.javaScriptEnabled = true

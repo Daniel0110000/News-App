@@ -20,35 +20,37 @@ class DisplayingFragmentElementsIns constructor(
     private val recyclerView: RecyclerView,
     private val progressBar: ProgressBar,
     private val category: String,
-): NewClickListener{
+) : NewClickListener {
 
-        fun initUICategories(){
-            viewModel.getNewsByCategory(category)
-            viewModel.newsByCategory.observe(fragment.viewLifecycleOwner){ news ->
-                if(news != null){
-                    initRecyclerView(news)
-                }else{
-                    fragment.requireView().findViewById<ConstraintLayout>(R.id.network_error_layout).visibility = View.VISIBLE
-                }
+    fun initUICategories() {
+        viewModel.getNewsByCategory(category)
+        viewModel.newsByCategory.observe(fragment.viewLifecycleOwner) { news ->
+            if (news != null) {
+                initRecyclerView(news)
+            } else {
+                fragment.requireView()
+                    .findViewById<ConstraintLayout>(R.id.network_error_layout).visibility =
+                    View.VISIBLE
             }
-
-            viewModel.isLoading.observe(fragment.viewLifecycleOwner){ isLoading ->
-                loading(isLoading)
-            }
-
         }
 
-    private fun initRecyclerView(newsList: ArrayList<News>){
+        viewModel.isLoading.observe(fragment.viewLifecycleOwner) { isLoading ->
+            loading(isLoading)
+        }
+
+    }
+
+    private fun initRecyclerView(newsList: ArrayList<News>) {
         recyclerView.hasFixedSize()
         recyclerView.layoutManager = LinearLayoutManager(fragment.context)
         recyclerView.adapter = RecyclerNewsAdapter(newsList, this)
     }
 
-    private fun loading(isLoading: Boolean){
-        if(isLoading){
+    private fun loading(isLoading: Boolean) {
+        if (isLoading) {
             progressBar.visibility = View.VISIBLE
             recyclerView.visibility = View.GONE
-        }else{
+        } else {
             progressBar.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE
         }
