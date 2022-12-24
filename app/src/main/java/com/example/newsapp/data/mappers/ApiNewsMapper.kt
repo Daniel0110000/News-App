@@ -18,6 +18,5 @@ fun NewsResponseDTO.getMapper(): ArrayList<News>{
             )
         )
     }
-
     return array
 }

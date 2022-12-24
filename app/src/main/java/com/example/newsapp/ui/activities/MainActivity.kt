@@ -11,13 +11,18 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.newsapp.R
 import com.example.newsapp.databinding.ActivityMainBinding
+import com.example.newsapp.domain.repository.NewsRepository
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    @Inject
+    lateinit var newsRepository: NewsRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initUI()
-
     }
 
     private fun initUI() {
@@ -44,8 +48,6 @@ class MainActivity : AppCompatActivity() {
         val navView = findViewById<NavigationView>(R.id.nav_drawer)
         val navController = Navigation.findNavController(this, R.id.fragment)
         NavigationUI.setupWithNavController(navView, navController)
-
-
     }
 
     private fun changeTheme() {

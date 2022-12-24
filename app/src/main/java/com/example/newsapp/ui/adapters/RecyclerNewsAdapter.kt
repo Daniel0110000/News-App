@@ -10,10 +10,16 @@ import com.example.newsapp.R
 import com.example.newsapp.domain.model.News
 import com.squareup.picasso.Picasso
 
-class RecyclerNewsAdapter(private val newsList: ArrayList<News>, private val listener: NewClickListener): RecyclerView.Adapter<RecyclerNewsAdapter.ViewHolder>() {
+class RecyclerNewsAdapter(
+    private val newsList: ArrayList<News>,
+    private val listener: NewClickListener,
+) : RecyclerView.Adapter<RecyclerNewsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.recycler_rows_design, parent, false))
+        return ViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.recycler_rows_design, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -29,21 +35,21 @@ class RecyclerNewsAdapter(private val newsList: ArrayList<News>, private val lis
         private val imageNews: ImageView = itemView.findViewById(R.id.image_news)
         private val publishedNews: TextView = itemView.findViewById(R.id.published_news)
 
+        fun print(position: Int) {
 
-        fun print(position: Int){
             titleNews.text = newsList[position].title
 
-            if(newsList[position].description?.isNotEmpty() == true){
+            if (newsList[position].description?.isNotEmpty() == true) {
                 descriptionNews.text = newsList[position].description
-            }else{
+            } else {
                 descriptionNews.text = "Null"
             }
 
-            if(newsList[position].image?.isNotEmpty() == true){
+            if (newsList[position].image?.isNotEmpty() == true) {
                 Picasso.get()
                     .load(newsList[position].image)
                     .into(imageNews)
-            }else{
+            } else {
                 imageNews.scaleType = ImageView.ScaleType.FIT_CENTER
                 imageNews.setImageResource(R.drawable.ic_app)
             }

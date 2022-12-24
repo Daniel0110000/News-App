@@ -18,7 +18,7 @@ object DataModule {
 
     @Singleton
     @Provides
-    fun providerApiService(): ApiService{
+    fun providerApiService(): ApiService {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -29,8 +29,7 @@ object DataModule {
 
     private val okHttpClient: OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(20, TimeUnit.SECONDS)
-        .writeTimeout(20, TimeUnit.SECONDS)
-        .readTimeout(20, TimeUnit.SECONDS)
+        .writeTimeout(15, TimeUnit.SECONDS)
+        .readTimeout(15, TimeUnit.SECONDS)
         .build()
-
 }

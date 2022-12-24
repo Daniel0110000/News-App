@@ -19,7 +19,7 @@ class DisplayingFragmentElementsIns constructor(
     private val fragment: Fragment,
     private val recyclerView: RecyclerView,
     private val progressBar: ProgressBar,
-    private val category: String
+    private val category: String,
 ): NewClickListener{
 
         fun initUICategories(){

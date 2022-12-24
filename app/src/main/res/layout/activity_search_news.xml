@@ -90,7 +90,8 @@
             <ImageView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:src="@drawable/img_search"/>
+                android:src="@drawable/img_search"
+                android:contentDescription="@string/search_news" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -101,7 +102,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/news_not_faund_layout"
+            android:id="@+id/news_not_found_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -115,7 +116,8 @@
             <ImageView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:src="@drawable/ic_not_found"/>
+                android:src="@drawable/ic_not_found"
+                android:contentDescription="@string/news_not_found" />
 
             <TextView
                 android:layout_width="wrap_content"

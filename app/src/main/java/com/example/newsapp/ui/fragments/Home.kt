@@ -74,5 +74,4 @@ class Home : Fragment(), NewClickListener {
         startActivity(descriptionNews)
     }
 
-
 }

@@ -9,11 +9,6 @@
             android:title="@string/home" />
 
         <item
-            android:id="@+id/markers"
-            android:icon="@drawable/ic_bookmark"
-            android:title="@string/markers" />
-
-        <item
             android:id="@+id/search"
             android:icon="@drawable/ic_search_nav"
             android:title="@string/search" />

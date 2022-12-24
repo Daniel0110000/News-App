@@ -29,6 +29,5 @@ class DescriptionNews : AppCompatActivity() {
         binding.backLayout.setOnClickListener {
             finish()
         }
-
     }
 }

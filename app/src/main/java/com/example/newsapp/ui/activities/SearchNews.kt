@@ -64,12 +64,6 @@ class SearchNews : AppCompatActivity(), NewClickListener {
         }
     }
 
-    override fun onItemClickListener(url: String) {
-        val descriptionNews = Intent(this, DescriptionNews::class.java)
-        descriptionNews.putExtra("url", url)
-        startActivity(descriptionNews)
-    }
-
     private fun visibleOrGoneLayouts(sdLayout: Int, rsLayout: Int, nfLayout: Int, networkMessage: Boolean){
         binding.searchDescriptionLayout.visibility = sdLayout
         binding.recyclerSearchNews.visibility = rsLayout
@@ -79,5 +73,11 @@ class SearchNews : AppCompatActivity(), NewClickListener {
         }else{
             findViewById<ConstraintLayout>(R.id.network_error_layout).visibility = View.GONE
         }
+    }
+
+    override fun onItemClickListener(url: String) {
+        val descriptionNews = Intent(this, DescriptionNews::class.java)
+        descriptionNews.putExtra("url", url)
+        startActivity(descriptionNews)
     }
 }

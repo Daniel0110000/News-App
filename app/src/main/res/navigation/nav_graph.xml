@@ -40,4 +40,8 @@
         android:name="com.example.newsapp.ui.fragments.Technology"
         android:label="fragment_technology"
         tools:layout="@layout/fragment_technology" />
+    <activity
+        android:id="@+id/search"
+        android:name="com.example.newsapp.ui.activities.SearchNews"
+        android:label="SearchNews" />
 </navigation>
